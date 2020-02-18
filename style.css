@@ -1,0 +1,292 @@
+html {
+	box-sizing: border-box;
+}
+
+*, 
+*:before,
+*:after{
+	box-sizing: inherit;
+}
+
+/*-------standaard opmaak--------*/
+body {
+	font-family: 'Open Sans', sans-serif;
+	margin: 0;
+	padding: 0;
+}
+
+h1, h2, p {
+	color: white;
+}
+
+h1, h2 {
+	text-align: center;
+	font-size: 14pt;
+}
+
+h1 {
+	font-size: 18pt;
+	padding-top: 3px;
+}
+
+p {
+	font-size: 11pt;
+	margin: 0;
+	padding: 5%;
+	padding-left: 5%;
+	max-width: 600px; 
+}
+
+img {
+	width: 100%;
+}
+
+.logo {
+	width: 70%;
+	max-width: 400px;
+	display: block;
+	margin: auto;
+	margin-top: 10px;
+}
+
+/* --------------Hamburger menu-------------- */
+.toggleMenu > a {
+ 	text-decoration: none;
+  	font-weight: 800;
+  	font-size: 2em;
+}
+
+.toggleMenu {
+ 	position: absolute;
+ 	right: 24px;
+ 	top: 19px;
+ 	color: white;
+}
+
+.menu i {
+	color: white;
+}
+
+.overlay {
+    height: 0;
+    width: 100%;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    background-color: #1E2637;
+    overflow-x: hidden; 
+    overflow-y: hidden; 
+    transition: 0.5s;
+}
+
+.overlay-content {
+    position: relative;
+    top: 20%;
+    width: 100%; 
+    text-align: center;
+    list-style-type: none;
+}
+
+.overlay-content a {
+    padding: 8px;
+    text-decoration: none;
+    color: white;
+    font-size: 1.6em;
+    display: block; 
+    transition: 0.3s;
+}
+
+.overlay a:hover, .overlay a:focus {
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+.closebtn {
+    color: white;
+    position: absolute;
+    right: 24px;
+    top: 19px;
+    font-size: 2em;
+}
+
+nav {
+	display: flex; 
+	align-items: center;
+	float: right;
+	padding: 10px 10px;
+}
+
+/*--------opstelling grids----------*/
+.grid-container {
+	margin: 0 auto;
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+
+	grid-template-areas:
+	"header 		header"
+	"food			food"
+	"water			water"
+	"oxygen			oxygen";
+}
+
+/*--------opmaak losse grids----------*/
+
+header {
+	grid-area: header;
+	height: 100px;
+	width: 100%;
+}
+
+article:nth-of-type(1) {
+	grid-area: food;
+	width: 90%;
+	min-height: 300px;
+	margin:auto;
+	margin-bottom: 70px;
+}
+
+.block1 {
+	opacity: 0.4;
+	background-color: #AAC0D9;
+
+}
+
+article:nth-of-type(2) {
+	grid-area: water;
+	background-color: #AAC0D9;
+	width: 90%;
+	min-height: 300px;
+	margin:auto;
+	margin-bottom: 70px;
+}
+
+article:nth-of-type(3) {
+	grid-area: oxygen;
+	background-color: #AAC0D9;
+	width: 90%;
+	min-height: 300px;
+	margin:auto;
+	margin-bottom: 70px;
+}
+
+article:nth-of-type(1) h2, article:nth-of-type(1) p , article:nth-of-type(2) h2, article:nth-of-type(2) p, article:nth-of-type(3) h2, article:nth-of-type(3) p {
+	visibility: hidden;
+} 
+
+
+/*------------------------------ iPad ------------------------------------*/
+@media only screen and (min-width: 624px) {
+
+/*--------opstelling grids----------*/
+.grid-container {
+	margin: 0 auto;
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr;
+
+	grid-template-areas:						
+	"header 		header			header"
+	"food			food			water"			/*WHY IT NOT WORK THOUGH*/
+	"oxygen			oxygen			water"			
+	"footer			footer			footer";
+}
+
+article:nth-of-type(1) h2, article:nth-of-type(1) p , article:nth-of-type(2) h2, article:nth-of-type(2) p, article:nth-of-type(3) h2, article:nth-of-type(3) p {
+	visibility: visible;
+}
+
+article:nth-of-type(2) {
+	display: flex;
+	flex-direction: row;
+}
+
+/*------------------------------ Kleine laptop ------------------------------------*/
+@media only screen and (min-width: 768px) {		
+
+
+article:nth-of-type(2) {
+	display: flex;
+	flex-direction: column;
+}
+
+/*--------------footer--------------*/
+footer {
+	visibility: hidden;			/*DE RUIMTE IS ER WEL! HOE HAAL IK DIT WEG???*/
+	grid-area: footer;
+	background-color: #AAC0D9;
+	text-align: center;
+	min-height: 150px;
+}
+
+footer ul {
+	list-style-type: none;
+	padding-top: 10px;
+	padding-bottom: 10px;
+}
+
+footer li a {
+	text-decoration: none;
+	color: white;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	display: block;
+	display: 10px;
+}
+
+footer li a:hover {
+	font-weight: bold;
+	text-decoration: underline;
+}	
+
+footer {
+	visibility: visible;
+}
+
+footer div .footernav{
+	display: flex;
+	flex-direction: row;
+	justify-content: space-around;			
+	margin: -2%;
+}
+
+footer div .employees {
+	visibility: hidden;			/*DE RUIMTE IS ER WEL! HOE HAAL IK DIT WEG???*/
+}
+
+/*------------------------------ Grote laptop ------------------------------------*/
+/*1024px*/
+@media only screen and (min-width: 1024px) {
+
+
+/*--------------footer--------------*/
+
+footer {
+	min-height: 400px;
+}
+
+footer div {
+	visibility: visible;
+	float: left;
+} 
+
+footer div .employees {
+	visibility: visible;			/*HET WERKT NIET*/
+}
+
+.employees img {
+	max-width: 150px;
+}
+
+footer a {
+	color: white;
+}
+
+footer a:hover {
+	color: #1E2637;
+}
+
+footer a: visited {
+	color: lightgrey;
+}
+
+}
