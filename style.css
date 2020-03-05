@@ -10,9 +10,13 @@ html {
 
 /*-------standaard opmaak--------*/
 body {
+	background-image: url("img/background.jpeg");
+	background-size: 100%;
+	background-repeat: repeat;
 	font-family: 'Open Sans', sans-serif;
 	margin: 0;
 	padding: 0;
+	width: 100%;
 }
 
 h1, h2, p {
@@ -41,12 +45,26 @@ img {
 	width: 100%;
 }
 
+.header {
+	margin-bottom: 20px;
+}
+
 .logo {
 	width: 70%;
 	max-width: 400px;
 	display: block;
 	margin: auto;
 	margin-top: 10px;
+}
+
+.infobutton {
+	width: 20px;
+	float: right;
+	margin-right: 15px;
+}
+
+#underline {
+	text-decoration: underline;
 }
 
 /* --------------Hamburger menu-------------- */
@@ -117,20 +135,20 @@ nav {
 	padding: 10px 10px;
 }
 
-/*--------opstelling grids----------*/
+/*-----------opstelling grids-------------*/
 .grid-container {
 	margin: 0 auto;
 	display: grid;
-	grid-template-columns: 1fr 1fr;
+	grid-template-columns: 1fr;
 
 	grid-template-areas:
-	"header 		header"
-	"food			food"
-	"water			water"
-	"oxygen			oxygen";
+	"header"
+	"food"
+	"water"
+	"oxygen";
 }
 
-/*--------opmaak losse grids----------*/
+/*------------opmaak losse grids--------------*/
 
 header {
 	grid-area: header;
@@ -140,43 +158,114 @@ header {
 
 article:nth-of-type(1) {
 	grid-area: food;
-	width: 90%;
-	min-height: 300px;
-	margin:auto;
-	margin-bottom: 70px;
-}
-
-.block1 {
-	opacity: 0.4;
-	background-color: #AAC0D9;
-
 }
 
 article:nth-of-type(2) {
 	grid-area: water;
-	background-color: #AAC0D9;
-	width: 90%;
-	min-height: 300px;
-	margin:auto;
-	margin-bottom: 70px;
 }
 
 article:nth-of-type(3) {
 	grid-area: oxygen;
-	background-color: #AAC0D9;
+}
+
+article {
+	background-color: rgba(170, 192, 217, 0.4);
 	width: 90%;
 	min-height: 300px;
-	margin:auto;
+	margin: auto;
 	margin-bottom: 70px;
 }
 
+/*------------informatie nog onzichtbaar-------------*/
+
 article:nth-of-type(1) h2, article:nth-of-type(1) p , article:nth-of-type(2) h2, article:nth-of-type(2) p, article:nth-of-type(3) h2, article:nth-of-type(3) p {
-	visibility: hidden;
+	display: none;
 } 
 
+footer {	
+	display: none;
+} 
+
+/*------------opmaak grafiekjes-------------*/
+#columnchart svg > rect , #donutchart svg > rect , #gauge svg > rect {
+	fill: none;
+}
+
+#columnchart {
+	width: 450px; height: 200px;
+	margin: 0 auto;
+}
+
+#donutchart {
+	width: 250px; height: 250px;
+	margin: 0 auto;
+}
+
+#gauge {
+	width: 200px; height: 200px;
+	margin: 0 auto;
+}
 
 /*------------------------------ iPad ------------------------------------*/
 @media only screen and (min-width: 624px) {
+
+/*--------informatie onzichtbaar--------*/
+.infobutton {
+	display: none;
+}
+
+/*--------opstelling grids----------*/
+.grid-container {
+	margin: 0 auto;
+	display: grid;
+	grid-template-columns: 1fr 1fr ;
+
+	grid-template-areas:						
+	"header			header"
+	"food			food"
+	"oxygen			water";
+}
+
+/*--------opmaak blokken----------*/
+
+article {
+	margin-bottom: 30px;
+}
+
+article:nth-of-type(1) h2, article:nth-of-type(1) p , article:nth-of-type(2) h2, article:nth-of-type(2) p, article:nth-of-type(3) h2, article:nth-of-type(3) p {
+	display: block;
+}
+
+article:nth-of-type(3) {
+	margin-top: 0px;
+}
+
+#columnchart {
+	width: 350px; height: 200px;
+}
+
+#gauge {
+	margin-top: 45px;
+}
+
+article:nth-of-type(3) h2 {
+	margin-top: 40px;
+}
+
+/*--------opmaak food supply----------*/
+
+article:nth-of-type(1) { 
+	display: flex;
+	flex-flow: row;
+	width: 95%;
+}
+
+article:nth-of-type(1) h2 {
+	margin-top: 32px;
+}
+
+/*------------------------------ Kleine laptop ------------------------------------*/
+@media only screen and (min-width: 834px) {		
 
 /*--------opstelling grids----------*/
 .grid-container {
@@ -186,37 +275,74 @@ article:nth-of-type(1) h2, article:nth-of-type(1) p , article:nth-of-type(2) h2,
 
 	grid-template-areas:						
 	"header 		header			header"
-	"food			food			water"			/*WHY IT NOT WORK THOUGH*/
-	"oxygen			oxygen			water"			
-	"footer			footer			footer";
+	"food			water			oxygen"
+	"footer         footer 			footer";
+}	
+
+.toggleMenu {
+	display: none;
 }
 
-article:nth-of-type(1) h2, article:nth-of-type(1) p , article:nth-of-type(2) h2, article:nth-of-type(2) p, article:nth-of-type(3) h2, article:nth-of-type(3) p {
-	visibility: visible;
+/*--------opmaak grafiekjes----------*/
+#columnchart {
+	width: 280px; height: 160px;
 }
 
-article:nth-of-type(2) {
+#donutchart {
+	width: 200px; height: 200px;
+}
+
+#gauge {
+	width: 150px; height: 150px;
+	margin-top: 50px;
+}
+
+article:nth-of-type(3) h2 {
+	margin-top: 37px;
+}
+
+/*--------opmaak food supply terug zetten----------*/
+
+
+article:nth-of-type(1) h2 {
+	margin-top: 57px;
+}
+
+article:nth-of-type(1) { 
 	display: flex;
-	flex-direction: row;
+	flex-flow: column;
+	width: 90%;
 }
 
-/*------------------------------ Kleine laptop ------------------------------------*/
-@media only screen and (min-width: 768px) {		
-
-
-article:nth-of-type(2) {
-	display: flex;
-	flex-direction: column;
+article:nth-of-type(1), article:nth-of-type(2), article:nth-of-type(3) {
+	min-height: 510px;
+	margin-top: 0px;
 }
 
 /*--------------footer--------------*/
 footer {
-	visibility: hidden;			/*DE RUIMTE IS ER WEL! HOE HAAL IK DIT WEG???*/
 	grid-area: footer;
-	background-color: #AAC0D9;
-	text-align: center;
+	display: initial;
+	background-color: rgba(170, 192, 217, 0.4);
 	min-height: 150px;
 }
+
+footer div {
+	float: left;
+} 
+
+footer .footernav ul li a {
+	margin-left: auto;
+    margin-right: auto;
+    max-width: 215px;
+}
+
+footer > .footernav {
+	width: calc(100% / 3);
+	display: inline-block;
+}
+
+/*-------------- interactie footer--------------*/
 
 footer ul {
 	list-style-type: none;
@@ -230,7 +356,6 @@ footer li a {
 	padding-top: 5px;
 	padding-bottom: 5px;
 	display: block;
-	display: 10px;
 }
 
 footer li a:hover {
@@ -238,55 +363,87 @@ footer li a:hover {
 	text-decoration: underline;
 }	
 
-footer {
-	visibility: visible;
-}
+/*-----------informatie nog onzichtbaar------------*/
 
-footer div .footernav{
-	display: flex;
-	flex-direction: row;
-	justify-content: space-around;			
-	margin: -2%;
-}
-
-footer div .employees {
-	visibility: hidden;			/*DE RUIMTE IS ER WEL! HOE HAAL IK DIT WEG???*/
+.employees {
+	display: none;
 }
 
 /*------------------------------ Grote laptop ------------------------------------*/
 /*1024px*/
-@media only screen and (min-width: 1024px) {
+@media only screen and (min-width: 1200px) {
 
+/*--------opstelling grids----------*/
+.grid-container {
+	margin: 0 auto;
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr;
 
-/*--------------footer--------------*/
-
-footer {
-	min-height: 400px;
+	grid-template-areas:						
+	"header 		header			header"
+	"food			water			oxygen"
+	"footer         footer 			footer";
 }
 
+/*--------opmaak grafiekjes----------*/
+#columnchart {
+	width: 400px; height: 250px;
+}
+
+#donutchart {
+	width: 250px; height: 250px;
+}
+
+#gauge {
+	width: 200px; height: 200px;
+}
+
+article:nth-of-type(1) h2 {
+	margin-top: 16px;
+}
+
+/*-----------informatie weer zichtbaar------------*/
+
+.employees {
+	display: initial;
+}
+
+/*--------------employees centreren--------------*/
+
 footer div {
-	visibility: visible;
 	float: left;
 } 
 
-footer div .employees {
-	visibility: visible;			/*HET WERKT NIET*/
+.employees {
+	width: calc(100% / 3);
+	text-align: center;
+	margin-bottom: 10px;
+}
+
+footer .employees p {
+	padding: 0%;
 }
 
 .employees img {
-	max-width: 150px;
+	max-width: 180px;
+	margin-bottom: 10px;
 }
 
-footer a {
+/*-------------- interactie footer--------------*/
+
+.employees li {
+list-style-type: none;
+}
+
+.employees li a {
+	text-decoration: none;
 	color: white;
+	display: block;
 }
 
-footer a:hover {
-	color: #1E2637;
-}
-
-footer a: visited {
-	color: lightgrey;
+.employees li a:hover {
+	font-weight: bold;
+	text-decoration: underline;
 }
 
 }
